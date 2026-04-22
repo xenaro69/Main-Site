@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xenaro | Gaming Creator</title>
+
+  <style>
+    .banner-section {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}
+
+.banner-section img {
+  width: 90%;
+  max-width: 1200px;
+  border-radius: 12px;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+    .about-box {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #cbd5e1;
+  line-height: 1.8;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.about-box p {
+  margin-bottom: 15px;
+}
+
+.about-stats {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.about-stat {
+  background: rgba(255,255,255,0.06);
+  padding: 18px 25px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+  min-width: 140px;
+}
+
+.about-stat h3 {
+  color: #38bdf8;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.about-stat p {
+  font-size: 14px;
+  color: #94a3b8;
+}
+    .milestone-wrapper {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.progress-box {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
+  padding: 28px;
+  margin-bottom: 28px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.progress-box h3 {
+  font-size: 28px;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.progress-text {
+  color: #cbd5e1;
+  font-size: 17px;
+  margin-bottom: 16px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 18px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #38bdf8, #22c55e);
+  box-shadow: 0 0 20px rgba(56,189,248,0.35);
+  transition: width 1.2s ease;
+}
+
+.next-goal {
+  margin-top: 14px;
+  color: #94a3b8;
+  font-size: 15px;
+}
+
+.milestone-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.milestone-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  transition: 0.35s;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.milestone-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(56,189,248,0.12), rgba(34,197,94,0.08));
+  opacity: 0;
+  transition: 0.35s;
+  pointer-events: none;
+}
+
+.milestone-card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+.milestone-card:hover::before {
+  opacity: 1;
+}
+
+.milestone-number {
+  font-size: 34px;
+  font-weight: bold;
+  color: #38bdf8;
+  margin-bottom: 8px;
+}
+
+.milestone-label {
+  color: #cbd5e1;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.milestone-status {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.milestone-card.unlocked {
+  border-color: rgba(34,197,94,0.35);
+  box-shadow: 0 10px 25px rgba(34,197,94,0.12);
+}
+
+.milestone-card.unlocked .milestone-status {
+  background: rgba(34,197,94,0.15);
+  color: #4ade80;
+}
+
+.milestone-card.current {
+  border-color: rgba(56,189,248,0.45);
+  box-shadow: 0 10px 30px rgba(56,189,248,0.18);
+  transform: scale(1.03);
+}
+
+.milestone-card.current .milestone-status {
+  background: rgba(56,189,248,0.16);
+  color: #7dd3fc;
+}
+
+.milestone-card.locked .milestone-status {
+  background: rgba(148,163,184,0.14);
+  color: #cbd5e1;
+}
+
+@media (max-width: 980px) {
+  .milestone-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .milestone-container {
+    grid-template-columns: 1fr;
+  }
+}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #060816, #0f172a, #111827);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .bg-glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(56,189,248,0.25), transparent 70%);
+      top: -100px;
+      left: -100px;
+      z-index: -1;
+      filter: blur(40px);
+    }
+
+    .bg-glow.two {
+      top: auto;
+      left: auto;
+      right: -100px;
+      bottom: -100px;
+      background: radial-gradient(circle, rgba(168,85,247,0.22), transparent 70%);
+    }
+
+    nav {
+      width: 100%;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: rgba(6, 8, 22, 0.7);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #38bdf8;
+      letter-spacing: 1px;
+      text-shadow: 0 0 12px rgba(56,189,248,0.6);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #d1d5db;
+      transition: 0.3s;
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: #38bdf8;
+    }
+
+    .nav-btn {
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(34,197,94,0.35);
+      transition: 0.3s;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 70px 8%;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 64px;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 span {
+      color: #38bdf8;
+      text-shadow: 0 0 18px rgba(56,189,248,0.55);
+    }
+
+    .hero-text p {
+      color: #cbd5e1;
+      font-size: 18px;
+      line-height: 1.7;
+      max-width: 650px;
+      margin-bottom: 28px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+      color: white;
+      box-shadow: 0 0 18px rgba(56,189,248,0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.03);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 18px 22px;
+      border-radius: 16px;
+      min-width: 140px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+
+    .stat h3 {
+      font-size: 24px;
+      color: #38bdf8;
+      margin-bottom: 4px;
+    }
+
+    .stat p {
+      font-size: 14px;
+      color: #cbd5e1;
+      margin: 0;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(56,189,248,0.12), rgba(168,85,247,0.08));
+      pointer-events: none;
+    }
+
+    .card-badge {
+      display: inline-block;
+      padding: 8px 14px;
+      background: rgba(56,189,248,0.15);
+      border: 1px solid rgba(56,189,248,0.25);
+      border-radius: 999px;
+      color: #7dd3fc;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .hero-card h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .hero-card p {
+      color: #cbd5e1;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .mini-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .mini-card {
+      background: rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .mini-card h4 {
+      color: #38bdf8;
+      margin-bottom: 8px;
+    }
+
+    section {
+      padding: 90px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #cbd5e1;
+      font-size: 17px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .content-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 24px;
+      transition: 0.3s;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    }
+
+    .content-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(56,189,248,0.35);
+      box-shadow: 0 12px 35px rgba(56,189,248,0.12);
+    }
+
+    .content-card .icon {
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+
+    .content-card h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .content-card p {
+      color: #cbd5e1;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .about-box {
+      max-width: 1000px;
+      margin: auto;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 35px;
+      line-height: 1.8;
+      color: #dbeafe;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+
+    .socials {
+      margin-top: 25px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .socials a {
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: 0.3s;
+    }
+
+    .socials a:hover {
+      background: rgba(56,189,248,0.12);
+      border-color: rgba(56,189,248,0.35);
+      transform: translateY(-3px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #94a3b8;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 30px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-content,
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h1 {
+        font-size: 48px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 100px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-text h1 {
+        font-size: 38px;
+      }
+
+      .section-title h2 {
+        font-size: 30px;
+      }
+
+      .mini-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow"></div>
+  <div class="bg-glow two"></div>
+
+  <nav>
+    <div class="logo">Xenaro</div>
+
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#content">Content</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-btn" href="#contact">Join Community</a>
+    </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1> <span>Hey Homies!!</span>❤️‍🩹</h1>
+        <p>
+          I'm Ankit, This is my personal website where I share my Edits, Memes, and other content related to my Youtube Channel.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn btn-primary" onclick="scrollToSection('content')">Explore Content</button>
+          <button class="btn btn-secondary" onclick="showMessage()">Click Me</button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <h3 id="subs">0</h3>
+            <p>Subscribers</p>
+          </div>
+          <div class="stat">
+            <h3 id="videos">0</h3>
+            <p>Videos</p>
+          </div>
+          <div class="stat">
+            <h3 id="views">0</h3>
+            <p>Total Views</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="card-badge">About Me</div>
+        <h2>Ghee Khatam...</h2>
+        <p>
+          I’m a Class 12 CS pass-out (result abhi tak aaya nahi hai… fail bhi ho sakta hu 🥀). I run a small YouTube channel with around 1.1k subscribers where I create video edits. I’m also pretty interested in video games.
+
+        </p>
+
+        <div class="mini-cards">
+          <div class="mini-card">
+            <h4>🎮 Gaming Theme</h4>
+            <p>Dark neon UI built for a creator vibe.</p>
+          </div>
+          <div class="mini-card">
+            <h4>⚡ Fast Layout</h4>
+            <p>Everything in one file and easy to edit.</p>
+          </div>
+          <div class="mini-card">
+            <h4>🚀 Interactive</h4>
+            <p>Buttons, effects, smooth scroll, counters.</p>
+          </div>
+          <div class="mini-card">
+            <h4>🌍 Ready to Grow</h4>
+            <p>You can later host it online on GitHub.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="content">
+    <div class="section-title">
+      <h2>Featured Content</h2>
+      <p>Watch different types of content here.</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="content-card">
+        <div class="icon">📺</div>
+        <h3>Recommended Youtube Videos</h3>
+        <p>
+          Click here to watch some of most recommended videos of my channel.
+        </p>
+      </div>
+
+      <div class="content-card">
+        <div class="icon">⚔️</div>
+        <h3>Github Page</h3>
+        <p>
+          Click here to visit my github page.
+        </p>
+      </div>
+
+      <div class="content-card">
+        <div class="icon">🎥</div>
+        <h3>Some Random Ass Edits</h3>
+        <p>
+          Click here to watch some of my random video edits.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+   <section id="about">
+  <div class="section-title">
+    <h2>About My YouTube Channel</h2>
+    <p>My Journey From 2022 In YouTube</p>
+  </div>
+
+  <div class="about-box">
+    <p>
+      Making YouTube videos on games like Minecraft, Free Fire and more since 2022.
+      I’ve been consistently improving my content, learning editing, and building a small but strong community.
+    </p>
+
+    <p>
+      My goal is to create entertaining, high-quality gaming content and grow Xenaro into a recognizable creator brand 🚀
+    </p>
+  </div>
+
+  <div class="about-stats">
+    <div class="about-stat">
+      <h3>1K+</h3>
+      <p>Subscribers</p>
+    </div>
+
+    <div class="about-stat">
+      <h3>300+</h3>
+      <p>Videos</p>
+    </div>
+
+    <div class="about-stat">
+      <h3>369K+</h3>
+      <p>Views</p>
+    </div>
+  </div>
+</section>
+<div class="banner-section">
+  <img src="banner.png" alt="Xenaro Banner">
+</div>
+    <section id="milestones">
+  <div class="section-title">
+    <h2>YouTube Milestones 🚀</h2>
+    <p>My growth journey on YouTube</p>
+  </div>
+
+  <div class="milestone-wrapper">
+    <div class="progress-box">
+      <h3>Current Progress</h3>
+      <p class="progress-text">
+        Current Subscribers: <span id="currentSubsText">0</span> / <span id="goalSubsText">10,000</span>
+      </p>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <p class="next-goal" id="nextGoalText">Next goal: 10,000 subscribers</p>
+    </div>
+
+    <div class="milestone-container">
+      <div class="milestone-card" data-goal="100">
+        <div class="milestone-number">100</div>
+        <div class="milestone-label">Subscribers</div>
+        <div class="milestone-status">Unlocked</div>
+      </div>
+
+      <div class="milestone-card" data-goal="1000">
+        <div class="milestone-number">1,000</div>
+        <div class="milestone-label">Subscribers</div>
+        <div class="milestone-status">Unlocked</div>
+      </div>
+
+      <div class="milestone-card" data-goal="10000">
+        <div class="milestone-number">10,000</div>
+        <div class="milestone-label">Subscribers</div>
+        <div class="milestone-status">In Progress</div>
+      </div>
+
+      <div class="milestone-card" data-goal="100000">
+        <div class="milestone-number">100,000</div>
+        <div class="milestone-label">Subscribers</div>
+        <div class="milestone-status">Locked</div>
+      </div>
+    </div>
+  </div>
+</section>
+</section>
+</section>
+  </section>
+
+  <section id="contact">
+    <div class="section-title">
+      <h2>Connect With Me</h2>
+    </div>
+
+    <div class="socials">
+      <a href="https://youtube.com/@xenaro.69" target="_blank">YouTube</a>
+      <a href="https://discord.gg/C64h96EGR7" target="_blank">Discord</a>
+      <a href="https://instagram.com/xenaro.69" target="_blank">Instagram</a>
+      <a href="https://x.com/xenaro_69" target="_blank">Twitter / X</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Xenaro. All rights reserved.
+  </footer>
+
+  <script>
+    function scrollToSection(sectionId) {
+      document.getElementById(sectionId).scrollIntoView({ behavior: "smooth" });
+    }
+
+    function showMessage() {
+      alert("Welcome to Xenaro 🔥");
+    }
+
+    function animateValue(id, end, duration) {
+      let start = 0;
+      let range = end - start;
+      let current = start;
+      let increment = end > start ? 1 : -1;
+      let stepTime = Math.abs(Math.floor(duration / range));
+
+      let timer = setInterval(function () {
+        current += increment;
+        document.getElementById(id).textContent = current;
+        if (current == end) {
+          clearInterval(timer);
+        }
+      }, stepTime);
+    }
+
+    window.onload = function () {
+      animateValue("subs", 1100, 1200);
+      animateValue("videos", 310, 1200);
+      animateValue("views", 369000, 1);
+    };
+  </script>
+  <script>
+  const currentSubscribers = 1030;
+  const goalSubscribers = 10000;
+
+  function animateNumber(elementId, target, duration) {
+    let start = 0;
+    let increment = Math.max(1, Math.ceil(target / 80));
+    let stepTime = Math.max(20, Math.floor(duration / (target / increment)));
+    const element = document.getElementById(elementId);
+
+    const timer = setInterval(() => {
+      start += increment;
+
+      if (start >= target) {
+        start = target;
+        clearInterval(timer);
+      }
+
+      element.textContent = start.toLocaleString();
+    }, stepTime);
+  }
+
+  function animateProgressBar(current, goal) {
+    const percent = Math.min((current / goal) * 100, 100);
+    const bar = document.getElementById("progressFill");
+
+    setTimeout(() => {
+      bar.style.width = percent + "%";
+    }, 200);
+  }
+
+  function updateMilestones(current) {
+    const cards = document.querySelectorAll(".milestone-card");
+    let nextGoal = null;
+
+    cards.forEach((card) => {
+      const goal = Number(card.getAttribute("data-goal"));
+      const status = card.querySelector(".milestone-status");
+
+      card.classList.remove("unlocked", "current", "locked");
+
+      if (current >= goal) {
+        card.classList.add("unlocked");
+        status.textContent = "Unlocked";
+      } else if (nextGoal === null) {
+        card.classList.add("current");
+        status.textContent = "In Progress";
+        nextGoal = goal;
+      } else {
+        card.classList.add("locked");
+        status.textContent = "Locked";
+      }
+    });
+
+    if (nextGoal === null) {
+      document.getElementById("nextGoalText").textContent = "All milestones completed 🎉";
+    } else {
+      document.getElementById("nextGoalText").textContent =
+        "Next goal: " + nextGoal.toLocaleString() + " subscribers";
+    }
+  }
+
+  function startMilestoneSection() {
+    animateNumber("currentSubsText", currentSubscribers, 1000);
+    document.getElementById("goalSubsText").textContent = goalSubscribers.toLocaleString();
+    animateProgressBar(currentSubscribers, goalSubscribers);
+    updateMilestones(currentSubscribers);
+  }
+
+  let milestoneStarted = false;
+
+  window.addEventListener("scroll", () => {
+    const section = document.getElementById("milestones");
+    if (!section || milestoneStarted) return;
+
+    const sectionTop = section.getBoundingClientRect().top;
+    const triggerPoint = window.innerHeight - 100;
+
+    if (sectionTop < triggerPoint) {
+      milestoneStarted = true;
+      startMilestoneSection();
+    }
+  });
+
+  window.addEventListener("load", () => {
+    const section = document.getElementById("milestones");
+    if (!section) return;
+
+    const sectionTop = section.getBoundingClientRect().top;
+    const triggerPoint = window.innerHeight - 100;
+
+    if (sectionTop < triggerPoint && !milestoneStarted) {
+      milestoneStarted = true;
+      startMilestoneSection();
+    }
+  });
+</script>
+</script>
+
+</body>
+</html>
