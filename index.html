@@ -6,229 +6,6 @@
   <title>Xenaro | Gaming Creator</title>
 
   <style>
-    .single-info-box {
-  margin-top: 22px;
-  padding: 24px;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-.single-info-box h3 {
-  font-size: 28px;
-  margin-bottom: 12px;
-  color: #38bdf8;
-}
-
-.single-info-box p {
-  font-size: 18px;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.88);
-}
-    .banner-section {
-  display: flex;
-  justify-content: center;
-  margin: 50px 0;
-}
-
-.banner-section img {
-  width: 90%;
-  max-width: 1200px;
-  border-radius: 12px;
-  border: 2px solid rgba(255,255,255,0.1);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-}
-    .about-box {
-  max-width: 900px;
-  margin: 30px auto;
-  padding: 30px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  color: #cbd5e1;
-  line-height: 1.8;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-.about-box p {
-  margin-bottom: 15px;
-}
-
-.about-stats {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  margin-top: 30px;
-  flex-wrap: wrap;
-}
-
-.about-stat {
-  background: rgba(255,255,255,0.06);
-  padding: 18px 25px;
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.08);
-  text-align: center;
-  min-width: 140px;
-}
-
-.about-stat h3 {
-  color: #38bdf8;
-  font-size: 24px;
-  margin-bottom: 5px;
-}
-
-.about-stat p {
-  font-size: 14px;
-  color: #94a3b8;
-}
-    .milestone-wrapper {
-  max-width: 1100px;
-  margin: auto;
-}
-
-.progress-box {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 22px;
-  padding: 28px;
-  margin-bottom: 28px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-.progress-box h3 {
-  font-size: 28px;
-  margin-bottom: 12px;
-  color: #ffffff;
-}
-
-.progress-text {
-  color: #cbd5e1;
-  font-size: 17px;
-  margin-bottom: 16px;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 18px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 999px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.progress-fill {
-  width: 0%;
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #38bdf8, #22c55e);
-  box-shadow: 0 0 20px rgba(56,189,248,0.35);
-  transition: width 1.2s ease;
-}
-
-.next-goal {
-  margin-top: 14px;
-  color: #94a3b8;
-  font-size: 15px;
-}
-
-.milestone-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.milestone-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 20px;
-  padding: 24px;
-  text-align: center;
-  transition: 0.35s;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.18);
-  position: relative;
-  overflow: hidden;
-}
-
-.milestone-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(56,189,248,0.12), rgba(34,197,94,0.08));
-  opacity: 0;
-  transition: 0.35s;
-  pointer-events: none;
-}
-
-.milestone-card:hover {
-  transform: translateY(-6px) scale(1.02);
-}
-
-.milestone-card:hover::before {
-  opacity: 1;
-}
-
-.milestone-number {
-  font-size: 34px;
-  font-weight: bold;
-  color: #38bdf8;
-  margin-bottom: 8px;
-}
-
-.milestone-label {
-  color: #cbd5e1;
-  font-size: 15px;
-  margin-bottom: 12px;
-}
-
-.milestone-status {
-  font-size: 14px;
-  font-weight: bold;
-  padding: 8px 12px;
-  border-radius: 999px;
-  display: inline-block;
-}
-
-.milestone-card.unlocked {
-  border-color: rgba(34,197,94,0.35);
-  box-shadow: 0 10px 25px rgba(34,197,94,0.12);
-}
-
-.milestone-card.unlocked .milestone-status {
-  background: rgba(34,197,94,0.15);
-  color: #4ade80;
-}
-
-.milestone-card.current {
-  border-color: rgba(56,189,248,0.45);
-  box-shadow: 0 10px 30px rgba(56,189,248,0.18);
-  transform: scale(1.03);
-}
-
-.milestone-card.current .milestone-status {
-  background: rgba(56,189,248,0.16);
-  color: #7dd3fc;
-}
-
-.milestone-card.locked .milestone-status {
-  background: rgba(148,163,184,0.14);
-  color: #cbd5e1;
-}
-
-@media (max-width: 980px) {
-  .milestone-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .milestone-container {
-    grid-template-columns: 1fr;
-  }
-}
     * {
       margin: 0;
       padding: 0;
@@ -444,6 +221,15 @@
       color: #7dd3fc;
       font-size: 13px;
       margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card h2,
+    .hero-card p,
+    .single-info-box {
+      position: relative;
+      z-index: 1;
     }
 
     .hero-card h2 {
@@ -457,22 +243,28 @@
       margin-bottom: 22px;
     }
 
-    .mini-cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+    .single-info-box {
+      margin-top: 22px;
+      padding: 24px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
-    .mini-card {
-      background: rgba(255,255,255,0.06);
-      border-radius: 16px;
-      padding: 16px;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .mini-card h4 {
+    .single-info-box h3 {
+      font-size: 28px;
+      margin-bottom: 12px;
       color: #38bdf8;
-      margin-bottom: 8px;
+    }
+
+    .single-info-box p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.88);
+      margin-bottom: 0;
     }
 
     section {
@@ -501,12 +293,14 @@
     }
 
     .content-card {
+      display: block;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 22px;
       padding: 24px;
       transition: 0.3s;
       box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+      color: white;
     }
 
     .content-card:hover {
@@ -541,6 +335,187 @@
       line-height: 1.8;
       color: #dbeafe;
       box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .about-box p {
+      margin-bottom: 15px;
+    }
+
+    .about-stats {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .about-stat {
+      background: rgba(255,255,255,0.06);
+      padding: 18px 25px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      min-width: 140px;
+    }
+
+    .about-stat h3 {
+      color: #38bdf8;
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .about-stat p {
+      font-size: 14px;
+      color: #94a3b8;
+      margin-bottom: 0;
+    }
+
+    .banner-section {
+      display: flex;
+      justify-content: center;
+      margin: 50px 0 0;
+    }
+
+    .banner-section img {
+      width: 90%;
+      max-width: 1200px;
+      border-radius: 12px;
+      border: 2px solid rgba(255,255,255,0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .milestone-wrapper {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .progress-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .progress-box h3 {
+      font-size: 28px;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+
+    .progress-text {
+      color: #cbd5e1;
+      font-size: 17px;
+      margin-bottom: 16px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 18px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #38bdf8, #22c55e);
+      box-shadow: 0 0 20px rgba(56,189,248,0.35);
+      transition: width 1.2s ease;
+    }
+
+    .next-goal {
+      margin-top: 14px;
+      color: #94a3b8;
+      font-size: 15px;
+    }
+
+    .milestone-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .milestone-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      transition: 0.35s;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .milestone-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(56,189,248,0.12), rgba(34,197,94,0.08));
+      opacity: 0;
+      transition: 0.35s;
+      pointer-events: none;
+    }
+
+    .milestone-card:hover {
+      transform: translateY(-6px) scale(1.02);
+    }
+
+    .milestone-card:hover::before {
+      opacity: 1;
+    }
+
+    .milestone-number {
+      font-size: 34px;
+      font-weight: bold;
+      color: #38bdf8;
+      margin-bottom: 8px;
+    }
+
+    .milestone-label {
+      color: #cbd5e1;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .milestone-status {
+      font-size: 14px;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    .milestone-card.unlocked {
+      border-color: rgba(34,197,94,0.35);
+      box-shadow: 0 10px 25px rgba(34,197,94,0.12);
+    }
+
+    .milestone-card.unlocked .milestone-status {
+      background: rgba(34,197,94,0.15);
+      color: #4ade80;
+    }
+
+    .milestone-card.current {
+      border-color: rgba(56,189,248,0.45);
+      box-shadow: 0 10px 30px rgba(56,189,248,0.18);
+      transform: scale(1.03);
+    }
+
+    .milestone-card.current .milestone-status {
+      background: rgba(56,189,248,0.16);
+      color: #7dd3fc;
+    }
+
+    .milestone-card.locked .milestone-status {
+      background: rgba(148,163,184,0.14);
+      color: #cbd5e1;
     }
 
     .socials {
@@ -579,6 +554,10 @@
         grid-template-columns: 1fr;
       }
 
+      .milestone-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .hero-text h1 {
         font-size: 48px;
       }
@@ -601,13 +580,13 @@
         font-size: 30px;
       }
 
-      .mini-cards {
-        grid-template-columns: 1fr;
-      }
-
       .hero-buttons {
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      .milestone-container {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -632,7 +611,7 @@
   <section class="hero" id="home">
     <div class="hero-content">
       <div class="hero-text">
-        <h1> <span>Hey Homies!!</span>❤️‍🩹</h1>
+        <h1><span>Hey Homies!!</span>❤️‍🩹</h1>
         <p>
           I'm Ankit, This is my personal website where I share my Edits, Memes, and other content related to my Youtube Channel.
         </p>
@@ -662,19 +641,20 @@
         <div class="card-badge">About Me</div>
         <h2>Ghee Khatam...</h2>
         <p>
-          I’m a Class 12 CS pass-out (result abhi tak aaya nahi hai… fail bhi ho sakta hu 🥀). I run a small YouTube channel with around 1.1k subscribers where I create video edits. I’m also pretty interested in video games.
-
+          I’m a Class 12 CS pass-out (result abhi tak aaya nahi hai… fail bhi ho sakta hu 🥀).
+          I run a small YouTube channel with around 1.1k subscribers where I create video edits.
+          I’m also pretty interested in video games.
         </p>
 
         <div class="single-info-box">
-  <h3>About My Journey 🚀</h3>
-  <p>
-    I’m building my own space on the internet where I can share my edits,
-    videos, creative ideas, and future projects. This website is just the
-    beginning, and I’ll keep upgrading it with better designs, more content,
-    and cooler features over time.
-  </p>
-</div>
+          <h3>About My Journey 🚀</h3>
+          <p>
+            I’m building my own space on the internet where I can share my edits,
+            videos, creative ideas, and future projects. This website is just the
+            beginning, and I’ll keep upgrading it with better designs, more content,
+            and cooler features over time.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -686,119 +666,117 @@
     </div>
 
     <div class="cards-grid">
-      <div class="content-card">
+      <a class="content-card" href="https://www.youtube.com/@xenaro.69/videos" target="_blank">
         <div class="icon">📺</div>
         <h3>Recommended Youtube Videos</h3>
         <p>
           Click here to watch some of most recommended videos of my channel.
         </p>
-      </div>
+      </a>
 
-      <div class="content-card">
+      <a class="content-card" href="https://github.com/xenaro69" target="_blank">
         <div class="icon">⚔️</div>
         <h3>Github Page</h3>
         <p>
           Click here to visit my github page.
         </p>
-      </div>
+      </a>
 
-      <div class="content-card">
+      <a class="content-card" href="edits.html" target="_blank">
         <div class="icon">🎥</div>
         <h3>Some Random Ass Edits</h3>
         <p>
-          Click here to watch some of my random video edits.
+          Click here to open my edits page in a new tab.
         </p>
-      </div>
+      </a>
     </div>
   </section>
 
   <section id="about">
-   <section id="about">
-  <div class="section-title">
-    <h2>About My YouTube Channel</h2>
-    <p>My Journey From 2022 In YouTube</p>
-  </div>
-
-  <div class="about-box">
-    <p>
-      Making YouTube videos on games like Minecraft, Free Fire and more since 2022.
-      I’ve been consistently improving my content, learning editing, and building a small but strong community.
-    </p>
-
-    <p>
-      My goal is to create entertaining, high-quality gaming content and grow my Channel into a recognizable creator brand 🚀
-    </p>
-  </div>
-
-  <div class="about-stats">
-    <div class="about-stat">
-      <h3>1K+</h3>
-      <p>Subscribers</p>
+    <div class="section-title">
+      <h2>About My YouTube Channel</h2>
+      <p>My Journey From 2022 In YouTube</p>
     </div>
 
-    <div class="about-stat">
-      <h3>300+</h3>
-      <p>Videos</p>
-    </div>
-
-    <div class="about-stat">
-      <h3>369K+</h3>
-      <p>Views</p>
-    </div>
-  </div>
-</section>
-<div class="banner-section">
-  <img src="banner.png" alt="Xenaro Banner">
-</div>
-    <section id="milestones">
-  <div class="section-title">
-    <h2>YouTube Milestones 🚀</h2>
-    <p>My growth journey on YouTube</p>
-  </div>
-
-  <div class="milestone-wrapper">
-    <div class="progress-box">
-      <h3>Current Progress</h3>
-      <p class="progress-text">
-        Current Subscribers: <span id="currentSubsText">0</span> / <span id="goalSubsText">10,000</span>
+    <div class="about-box">
+      <p>
+        Making YouTube videos on games like Minecraft, Free Fire and more since 2022.
+        I’ve been consistently improving my content, learning editing, and building a small but strong community.
       </p>
 
-      <div class="progress-bar">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
-
-      <p class="next-goal" id="nextGoalText">Next goal: 10,000 subscribers</p>
+      <p>
+        My goal is to create entertaining, high-quality gaming content and grow my Channel into a recognizable creator brand 🚀
+      </p>
     </div>
 
-    <div class="milestone-container">
-      <div class="milestone-card" data-goal="100">
-        <div class="milestone-number">100</div>
-        <div class="milestone-label">Subscribers</div>
-        <div class="milestone-status">Unlocked</div>
+    <div class="about-stats">
+      <div class="about-stat">
+        <h3>1K+</h3>
+        <p>Subscribers</p>
       </div>
 
-      <div class="milestone-card" data-goal="1000">
-        <div class="milestone-number">1,000</div>
-        <div class="milestone-label">Subscribers</div>
-        <div class="milestone-status">Unlocked</div>
+      <div class="about-stat">
+        <h3>300+</h3>
+        <p>Videos</p>
       </div>
 
-      <div class="milestone-card" data-goal="10000">
-        <div class="milestone-number">10,000</div>
-        <div class="milestone-label">Subscribers</div>
-        <div class="milestone-status">In Progress</div>
-      </div>
-
-      <div class="milestone-card" data-goal="100000">
-        <div class="milestone-number">100,000</div>
-        <div class="milestone-label">Subscribers</div>
-        <div class="milestone-status">Locked</div>
+      <div class="about-stat">
+        <h3>369K+</h3>
+        <p>Views</p>
       </div>
     </div>
-  </div>
-</section>
-</section>
-</section>
+
+    <div class="banner-section">
+      <img src="banner.png" alt="Xenaro Banner">
+    </div>
+  </section>
+
+  <section id="milestones">
+    <div class="section-title">
+      <h2>YouTube Milestones 🚀</h2>
+      <p>My growth journey on YouTube</p>
+    </div>
+
+    <div class="milestone-wrapper">
+      <div class="progress-box">
+        <h3>Current Progress</h3>
+        <p class="progress-text">
+          Current Subscribers: <span id="currentSubsText">0</span> / <span id="goalSubsText">10,000</span>
+        </p>
+
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <p class="next-goal" id="nextGoalText">Next goal: 10,000 subscribers</p>
+      </div>
+
+      <div class="milestone-container">
+        <div class="milestone-card" data-goal="100">
+          <div class="milestone-number">100</div>
+          <div class="milestone-label">Subscribers</div>
+          <div class="milestone-status">Unlocked</div>
+        </div>
+
+        <div class="milestone-card" data-goal="1000">
+          <div class="milestone-number">1,000</div>
+          <div class="milestone-label">Subscribers</div>
+          <div class="milestone-status">Unlocked</div>
+        </div>
+
+        <div class="milestone-card" data-goal="10000">
+          <div class="milestone-number">10,000</div>
+          <div class="milestone-label">Subscribers</div>
+          <div class="milestone-status">In Progress</div>
+        </div>
+
+        <div class="milestone-card" data-goal="100000">
+          <div class="milestone-number">100,000</div>
+          <div class="milestone-label">Subscribers</div>
+          <div class="milestone-status">Locked</div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="contact">
@@ -834,9 +812,11 @@
       let increment = end > start ? 1 : -1;
       let stepTime = Math.abs(Math.floor(duration / range));
 
+      if (!isFinite(stepTime) || stepTime < 1) stepTime = 1;
+
       let timer = setInterval(function () {
         current += increment;
-        document.getElementById(id).textContent = current;
+        document.getElementById(id).textContent = current.toLocaleString();
         if (current == end) {
           clearInterval(timer);
         }
@@ -846,107 +826,107 @@
     window.onload = function () {
       animateValue("subs", 1100, 1200);
       animateValue("videos", 310, 1200);
-      animateValue("views", 369000, 1);
+      animateValue("views", 369000, 1200);
     };
   </script>
+
   <script>
-  const currentSubscribers = 1030;
-  const goalSubscribers = 10000;
+    const currentSubscribers = 1030;
+    const goalSubscribers = 10000;
 
-  function animateNumber(elementId, target, duration) {
-    let start = 0;
-    let increment = Math.max(1, Math.ceil(target / 80));
-    let stepTime = Math.max(20, Math.floor(duration / (target / increment)));
-    const element = document.getElementById(elementId);
+    function animateNumber(elementId, target, duration) {
+      let start = 0;
+      let increment = Math.max(1, Math.ceil(target / 80));
+      let stepTime = Math.max(20, Math.floor(duration / (target / increment)));
+      const element = document.getElementById(elementId);
 
-    const timer = setInterval(() => {
-      start += increment;
+      const timer = setInterval(() => {
+        start += increment;
 
-      if (start >= target) {
-        start = target;
-        clearInterval(timer);
-      }
+        if (start >= target) {
+          start = target;
+          clearInterval(timer);
+        }
 
-      element.textContent = start.toLocaleString();
-    }, stepTime);
-  }
+        element.textContent = start.toLocaleString();
+      }, stepTime);
+    }
 
-  function animateProgressBar(current, goal) {
-    const percent = Math.min((current / goal) * 100, 100);
-    const bar = document.getElementById("progressFill");
+    function animateProgressBar(current, goal) {
+      const percent = Math.min((current / goal) * 100, 100);
+      const bar = document.getElementById("progressFill");
 
-    setTimeout(() => {
-      bar.style.width = percent + "%";
-    }, 200);
-  }
+      setTimeout(() => {
+        bar.style.width = percent + "%";
+      }, 200);
+    }
 
-  function updateMilestones(current) {
-    const cards = document.querySelectorAll(".milestone-card");
-    let nextGoal = null;
+    function updateMilestones(current) {
+      const cards = document.querySelectorAll(".milestone-card");
+      let nextGoal = null;
 
-    cards.forEach((card) => {
-      const goal = Number(card.getAttribute("data-goal"));
-      const status = card.querySelector(".milestone-status");
+      cards.forEach((card) => {
+        const goal = Number(card.getAttribute("data-goal"));
+        const status = card.querySelector(".milestone-status");
 
-      card.classList.remove("unlocked", "current", "locked");
+        card.classList.remove("unlocked", "current", "locked");
 
-      if (current >= goal) {
-        card.classList.add("unlocked");
-        status.textContent = "Unlocked";
-      } else if (nextGoal === null) {
-        card.classList.add("current");
-        status.textContent = "In Progress";
-        nextGoal = goal;
+        if (current >= goal) {
+          card.classList.add("unlocked");
+          status.textContent = "Unlocked";
+        } else if (nextGoal === null) {
+          card.classList.add("current");
+          status.textContent = "In Progress";
+          nextGoal = goal;
+        } else {
+          card.classList.add("locked");
+          status.textContent = "Locked";
+        }
+      });
+
+      if (nextGoal === null) {
+        document.getElementById("nextGoalText").textContent = "All milestones completed 🎉";
       } else {
-        card.classList.add("locked");
-        status.textContent = "Locked";
+        document.getElementById("nextGoalText").textContent =
+          "Next goal: " + nextGoal.toLocaleString() + " subscribers";
+      }
+    }
+
+    function startMilestoneSection() {
+      animateNumber("currentSubsText", currentSubscribers, 1000);
+      document.getElementById("goalSubsText").textContent = goalSubscribers.toLocaleString();
+      animateProgressBar(currentSubscribers, goalSubscribers);
+      updateMilestones(currentSubscribers);
+    }
+
+    let milestoneStarted = false;
+
+    window.addEventListener("scroll", () => {
+      const section = document.getElementById("milestones");
+      if (!section || milestoneStarted) return;
+
+      const sectionTop = section.getBoundingClientRect().top;
+      const triggerPoint = window.innerHeight - 100;
+
+      if (sectionTop < triggerPoint) {
+        milestoneStarted = true;
+        startMilestoneSection();
       }
     });
 
-    if (nextGoal === null) {
-      document.getElementById("nextGoalText").textContent = "All milestones completed 🎉";
-    } else {
-      document.getElementById("nextGoalText").textContent =
-        "Next goal: " + nextGoal.toLocaleString() + " subscribers";
-    }
-  }
+    window.addEventListener("load", () => {
+      const section = document.getElementById("milestones");
+      if (!section) return;
 
-  function startMilestoneSection() {
-    animateNumber("currentSubsText", currentSubscribers, 1000);
-    document.getElementById("goalSubsText").textContent = goalSubscribers.toLocaleString();
-    animateProgressBar(currentSubscribers, goalSubscribers);
-    updateMilestones(currentSubscribers);
-  }
+      const sectionTop = section.getBoundingClientRect().top;
+      const triggerPoint = window.innerHeight - 100;
 
-  let milestoneStarted = false;
-
-  window.addEventListener("scroll", () => {
-    const section = document.getElementById("milestones");
-    if (!section || milestoneStarted) return;
-
-    const sectionTop = section.getBoundingClientRect().top;
-    const triggerPoint = window.innerHeight - 100;
-
-    if (sectionTop < triggerPoint) {
-      milestoneStarted = true;
-      startMilestoneSection();
-    }
-  });
-
-  window.addEventListener("load", () => {
-    const section = document.getElementById("milestones");
-    if (!section) return;
-
-    const sectionTop = section.getBoundingClientRect().top;
-    const triggerPoint = window.innerHeight - 100;
-
-    if (sectionTop < triggerPoint && !milestoneStarted) {
-      milestoneStarted = true;
-      startMilestoneSection();
-    }
-  });
-</script>
-</script>
+      if (sectionTop < triggerPoint && !milestoneStarted) {
+        milestoneStarted = true;
+        startMilestoneSection();
+      }
+    });
+  </script>
 
 </body>
 </html>
