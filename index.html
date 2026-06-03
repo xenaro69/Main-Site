@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Xenaro</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      background:
+      linear-gradient(rgba(5,5,10,.88),rgba(5,5,10,.92)),
+      url('your-image.jpg') center/cover no-repeat;
+      color:white;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:40px;
+    }
+
+    .container{
+      width:1400px;
+      border:2px solid #ff5ca8;
+      border-radius:28px;
+      background:rgba(8,8,15,.55);
+      backdrop-filter:blur(10px);
+      box-shadow:
+      0 0 25px rgba(255,92,168,.35),
+      inset 0 0 20px rgba(255,92,168,.08);
+      overflow:hidden;
+    }
+
+    /* TOP BAR */
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:26px 40px;
+      border-bottom:1px solid rgba(255,92,168,.25);
+    }
+
+    .logo{
+      font-size:54px;
+      letter-spacing:12px;
+      font-weight:600;
+    }
+
+    .logo span{
+      color:#ff5ca8;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:15px;
+      color:#ddd;
+      letter-spacing:8px;
+      font-size:20px;
+    }
+
+    .brand .icon{
+      width:48px;
+      height:48px;
+      border-radius:50%;
+      border:1px solid #ff5ca8;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#ff5ca8;
+      font-size:22px;
+      box-shadow:0 0 15px rgba(255,92,168,.35);
+    }
+
+    /* MAIN GRID */
+
+    .main{
+      display:grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap:24px;
+      padding:24px;
+    }
+
+    .left-image{
+      min-height:850px;
+      border-radius:22px;
+      overflow:hidden;
+      position:relative;
+      background:url('background.png') center/cover no-repeat;
+    }
+
+    .left-image::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,.65),transparent);
+    }
+
+    /* RIGHT SIDE */
+
+    .right{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .card{
+      background:rgba(12,12,20,.6);
+      border:1px solid rgba(255,92,168,.35);
+      border-radius:22px;
+      padding:28px;
+      box-shadow:
+      inset 0 0 20px rgba(255,92,168,.04),
+      0 0 18px rgba(0,0,0,.25);
+    }
+
+    .card h3{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:22px;
+      font-size:28px;
+      font-weight:500;
+      color:#fff;
+    }
+
+    .card h3 span{
+      color:#ff5ca8;
+    }
+
+    .card p{
+      line-height:1.9;
+      color:#ddd;
+      font-size:18px;
+    }
+
+    .goal{
+      grid-column:span 2;
+      text-align:center;
+      padding:45px 20px;
+    }
+
+    .goal h1{
+      font-size:110px;
+      color:#ff5ca8;
+      text-shadow:0 0 20px rgba(255,92,168,.45);
+    }
+
+    .goal p{
+      letter-spacing:12px;
+      color:#ffb2d1;
+      font-size:26px;
+    }
+
+    .social div,
+    .ids div{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:20px;
+      font-size:20px;
+      color:#ddd;
+    }
+
+    .social a{
+      color:#ff7ab8;
+      text-decoration:none;
+    }
+
+    .device{
+      display:flex;
+      align-items:center;
+      gap:25px;
+    }
+
+    .device img{
+      width:180px;
+      border-radius:12px;
+    }
+
+    .device-text h2{
+      margin-bottom:10px;
+      font-size:34px;
+    }
+
+    .footer{
+      text-align:center;
+      padding:24px;
+      border-top:1px solid rgba(255,92,168,.25);
+      color:#aaa;
+      letter-spacing:6px;
+      font-size:15px;
+    }
+
+    @media(max-width:1200px){
+
+      .main{
+        grid-template-columns:1fr;
+      }
+
+      .right{
+        grid-template-columns:1fr;
+      }
+
+      .goal{
+        grid-column:span 1;
+      }
+
+      .left-image{
+        min-height:500px;
+      }
+    }
+
+    @media(max-width:700px){
+
+      body{
+        padding:15px;
+      }
+
+      .logo{
+        font-size:36px;
+        letter-spacing:5px;
+      }
+
+      .brand{
+        font-size:12px;
+        letter-spacing:3px;
+      }
+
+      .topbar{
+        padding:20px;
+      }
+
+      .card{
+        padding:20px;
+      }
+
+      .goal h1{
+        font-size:70px;
+      }
+
+      .goal p{
+        font-size:18px;
+        letter-spacing:5px;
+      }
+
+      .device{
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="topbar">
+
+      <div class="logo">
+        <span>X</span>ENARO
+      </div>
+
+      <div class="brand">
+        <div class="icon">♛</div>
+        DARKCROWN
+      </div>
+
+    </div>
+
+    <div class="main">
+
+      <!-- LEFT IMAGE -->
+
+      <div class="left-image"></div>
+
+      <!-- RIGHT -->
+
+      <div class="right">
+
+        <div class="card">
+          <h3><span>👤</span> ABOUT ME</h3>
+
+          <p>
+            Hey! I’m Xenaro. <br>
+            I’m a passionate gamer and content creator who loves entertaining and connecting with amazing people.
+            Gaming isn’t just a hobby, it’s my lifestyle.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3><span>▶</span> ABOUT MY CHANNEL</h3>
+
+          <p>
+            Xenaro is all about high-quality gameplay, montages, live streams,
+            tips & tricks, and entertaining content.
+            I upload videos regularly and stream to build an awesome community.
+          </p>
+        </div>
+
+        <div class="card goal">
+          <h3><span>🎯</span> MY GOAL</h3>
+
+          <h1>100K</h1>
+          <p>SUBSCRIBERS</p>
+        </div>
+
+        <div class="card social">
+          <h3><span>🔗</span> CONNECT WITH ME</h3>
+
+          <div>
+            <span>Discord</span>
+            <a href="#">discord.gg/xenaro</a>
+          </div>
+
+          <div>
+            <span>Instagram</span>
+            <a href="#">@ig_xenaro</a>
+          </div>
+
+          <div>
+            <span>Twitter</span>
+            <a href="#">@xenaro_official</a>
+          </div>
+        </div>
+
+        <div class="card ids">
+          <h3><span>🎮</span> IN-GAME IDS</h3>
+
+          <div><span>BGMI ID</span> <span>5551234567</span></div>
+          <div><span>PUBG ID</span> <span>5551234567</span></div>
+          <div><span>FREE FIRE ID</span> <span>5551234567</span></div>
+          <div><span>CODM ID</span> <span>5551234567</span></div>
+        </div>
+
+        <div class="card">
+          <h3><span>💻</span> MY DEVICE</h3>
+
+          <div class="device">
+
+            <img src="https://i.imgur.com/6Iej2c3.png">
+
+            <div class="device-text">
+              <h2>Lenovo LOQ 15IAX9</h2>
+              <p>
+                Built for Performance.<br>
+                Made for Gamers.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="footer">
+      © 2026 Xenaro. All Rights Reserved.
+    </div>
+
+  </div>
+
+</body>
+</html>
