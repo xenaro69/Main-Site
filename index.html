@@ -3,380 +3,701 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Xenaro</title>
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<title>XENARO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+/* ==========================
+   XENARO
+   Black & White Theme
+========================== */
 
-  html, body {
-    width: 100%; height: 100%;
-    overflow: hidden;
-  }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: #0a0a0f;
-    color: #e8e8f0;
-    position: relative;
-  }
+html{
+    scroll-behavior:smooth;
+}
 
-  /* ── BACKGROUND ── */
-  .bg {
-    position: fixed; inset: 0; z-index: 0;
-    background: url('background.png') center center / cover no-repeat;
-  }
-  /* Dark overlay so UI stays readable over any image */
-  .bg::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(10,10,20,0.55) 0%,
-      rgba(10,10,20,0.35) 50%,
-      rgba(10,10,20,0.65) 100%
-    );
-  }
+html, body{
+    height:100%;
+}
 
-  /* ── LAYOUT SHELL ── */
-  .shell {
-    position: relative; z-index: 1;
-    width: 100vw; height: 100vh;
-    display: grid;
-    grid-template-rows: auto auto 1fr auto;
-    grid-template-columns: 1fr auto;
-    grid-template-areas:
-      "name    about"
-      "name    goal"
-      ".       ."
-      "socials socials";
-    padding: 2.8rem 3.2rem 2.2rem;
-    gap: 0;
-  }
+body{
+    font-family:'Poppins',sans-serif;
+    background:#0a0a0a;
+    color:#f5f5f5;
+    overflow:hidden;
+}
 
-  /* ── NAME — top left ── */
-  .name-block {
-    grid-area: name;
-    align-self: start;
-  }
-  .name-tag {
-    display: inline-block;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: clamp(2.4rem, 5vw, 4rem);
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    line-height: 1;
-    color: #fff;
-    text-shadow: 0 0 40px rgba(120, 80, 255, 0.6);
-    position: relative;
-  }
-  /* Thin accent underline — the signature element */
-  .name-tag::after {
-    content: '';
-    display: block;
-    margin-top: 6px;
-    height: 2px;
-    width: 100%;
-    background: linear-gradient(90deg, #7b5fff, #00f0ff, transparent);
-    border-radius: 1px;
-  }
-  .name-sub {
-    margin-top: 0.6rem;
-    font-size: 0.78rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(200,200,230,0.55);
-  }
+::-webkit-scrollbar{
+    width:10px;
+}
+::-webkit-scrollbar-track{
+    background:#0f0f0f;
+}
+::-webkit-scrollbar-thumb{
+    background:#ffffff;
+    border-radius:100px;
+}
 
-  /* ── ABOUT — top right ── */
-  .about-block {
-    grid-area: about;
-    align-self: start;
-    justify-self: end;
-    max-width: 340px;
-    background: linear-gradient(145deg, rgba(0,0,0,0.82) 0%, rgba(40,40,40,0.75) 50%, rgba(10,10,10,0.88) 100%);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 10px;
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    padding: 1.6rem 1.8rem;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 8px 32px rgba(0,0,0,0.5);
-  }
-  .about-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    background: linear-gradient(90deg, #fff, #888);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.75rem;
-  }
-  .about-text {
-    font-size: 0.92rem;
-    line-height: 1.72;
-    color: rgba(190,190,190,0.9);
-    font-weight: 300;
-  }
-  .about-text strong {
-    background: linear-gradient(90deg, #ffffff, #aaaaaa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 500;
-  }
+#loader{
+position:fixed;
+inset:0;
+background:#000000;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:99999;
+transition:1s;
+}
 
-  /* ── SOCIALS — bottom ── */
-  .socials-block {
-    grid-area: socials;
-    align-self: end;
-    justify-self: center;
-    display: flex;
-    align-items: center;
-    gap: 1.1rem;
-    padding-bottom: 0.2rem;
-    margin-top: auto;
-  }
+.loader-logo{
+font-size:60px;
+font-weight:800;
+letter-spacing:10px;
+color:#00cfff;
+animation:pulse 1.2s infinite;
+}
 
-  .social-link {
-    display: flex; align-items: center; gap: 0.55rem;
-    text-decoration: none;
-    padding: 0.55rem 1.15rem;
-    border-radius: 8px;
-    background: rgba(12, 12, 24, 0.55);
-    border: 1px solid rgba(255,255,255,0.1);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    color: rgba(210,210,240,0.85);
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    transition: background 0.22s, border-color 0.22s, color 0.22s, transform 0.18s, box-shadow 0.22s;
-  }
-  .social-link svg {
-    width: 16px; height: 16px;
-    flex-shrink: 0;
-    transition: transform 0.2s;
-  }
-  .social-link:hover { transform: translateY(-3px); }
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);text-shadow:0 0 20px #00cfff,0 0 50px #00cfff;}
+100%{transform:scale(1);}
+}
 
-  /* Per-platform accent colours */
-  .social-link.yt:hover  { background: rgba(255,0,0,0.18); border-color: rgba(255,0,0,0.5); color:#ff4444; box-shadow: 0 4px 20px rgba(255,0,0,0.2); }
-  .social-link.dc:hover  { background: rgba(88,101,242,0.22); border-color: rgba(88,101,242,0.55); color:#7289ff; box-shadow: 0 4px 20px rgba(88,101,242,0.22); }
-  .social-link.tw:hover  { background: rgba(0,0,0,0.28); border-color: rgba(255,255,255,0.4); color:#fff; box-shadow: 0 4px 20px rgba(255,255,255,0.08); }
-  .social-link.ig:hover  { background: rgba(225,48,108,0.18); border-color: rgba(225,48,108,0.45); color:#f77; box-shadow: 0 4px 20px rgba(225,48,108,0.2); }
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:64px;
+z-index:500;
+backdrop-filter:blur(18px);
+background:rgba(0,0,0,.5);
+border-bottom:1px solid rgba(255,255,255,.12);
+}
 
-  .social-divider {
-    width: 1px; height: 20px;
-    background: rgba(255,255,255,0.1);
-  }
+nav{
+max-width:1300px;
+height:100%;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 40px;
+}
 
-  /* ── GOAL BAR ── */
-  .goal-block {
-    align-self: start;
-    justify-self: end;
-    max-width: 340px;
-    width: 340px;
-    background: linear-gradient(145deg, rgba(0,0,0,0.82) 0%, rgba(40,40,40,0.75) 50%, rgba(10,10,10,0.88) 100%);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 10px;
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    padding: 1.1rem 1.8rem 1.3rem;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 8px 32px rgba(0,0,0,0.5);
-    margin-top: 0.6rem;
-  }
-  .goal-header {
-    display: flex; justify-content: space-between; align-items: baseline;
-    margin-bottom: 0.65rem;
-  }
-  .goal-label {
-    font-size: 0.66rem;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    background: linear-gradient(90deg, #fff, #888);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .goal-count {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: rgba(200,200,200,0.75);
-    letter-spacing: 0.05em;
-  }
-  .goal-count span { color: #fff; }
-  .goal-track {
-    width: 100%;
-    height: 5px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 99px;
-    overflow: hidden;
-    position: relative;
-  }
-  .goal-fill {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #444, #fff);
-    border-radius: 99px;
-    position: relative;
-    transition: width 1.4s cubic-bezier(.4,0,.2,1);
-  }
-  .goal-fill::after {
-    content: '';
-    position: absolute; right: -1px; top: 50%;
-    transform: translateY(-50%);
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 0 8px #fff, 0 0 16px rgba(255,255,255,0.5);
-  }
-  .goal-sub {
-    margin-top: 0.5rem;
-    font-size: 0.68rem;
-    color: rgba(160,160,160,0.6);
-    letter-spacing: 0.06em;
-  }
+.logo{
+font-size:24px;
+font-weight:800;
+letter-spacing:2px;
+color:#00cfff;
+text-shadow:0 0 12px #00cfff, 0 0 30px rgba(0,207,255,.6);
+}
 
-  /* ── MOBILE ── */
-  @media (max-width: 680px) {
-    html, body { overflow-y: auto; overflow-x: hidden; }
+nav ul{
+display:flex;
+list-style:none;
+gap:30px;
+}
+nav a{
+color:#f5f5f5;
+text-decoration:none;
+font-weight:500;
+font-size:14px;
+transition:.35s;
+}
+nav a:hover{
+color:#ffffff;
+opacity:.7;
+}
 
-    .shell {
-      width: 100%;
-      min-height: 100vh;
-      height: auto;
-      display: flex;
-      flex-direction: column;
-      padding: 2rem 1.2rem 1.8rem;
-      gap: 1rem;
-    }
+.join-btn{
+padding:9px 20px;
+background:#ffffff;
+border-radius:40px;
+color:#000000;
+font-weight:700;
+font-size:14px;
+transition:.4s;
+}
+.join-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 0 30px rgba(255,255,255,.5);
+}
 
-    .name-block { width: 100%; }
-    .name-tag { font-size: 2.4rem; }
+/* ---- One-page layout ---- */
 
-    .about-block {
-      width: 100%;
-      max-width: 100%;
-      justify-self: unset;
-      align-self: unset;
-    }
+.page{
+height:100vh;
+padding-top:64px;
+display:flex;
+flex-direction:column;
+max-width:1300px;
+margin:auto;
+}
 
-    .goal-block {
-      width: 100% !important;
-      max-width: 100% !important;
-      justify-self: unset;
-      align-self: unset;
-      margin-top: 0;
-    }
+.top-row{
+flex:1.15;
+min-height:0;
+display:grid;
+grid-template-columns:1.1fr .9fr;
+align-items:center;
+gap:clamp(20px,3vw,60px);
+padding:1.5vh 40px;
+}
 
-    /* Push socials to bottom */
-    .socials-block {
-      margin-top: auto;
-      padding-top: 1.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.7rem;
-    }
+.hero h1{
+font-size:clamp(30px,4.2vw,56px);
+line-height:1.05;
+font-weight:800;
+margin-bottom:14px;
+}
 
-    .social-divider { display: none; }
+.hero p{
+font-size:clamp(13px,1.4vw,18px);
+opacity:.7;
+}
 
-    .social-link {
-      padding: 0.55rem 1rem;
-      font-size: 0.8rem;
-    }
-  }
+.hero-right{
+perspective:1200px;
+}
 
-  @media (prefers-reduced-motion: reduce) {
-    .social-link, .social-link svg { transition: none; }
-  }
+.glass-card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.12);
+border-radius:22px;
+padding:clamp(20px,3vh,32px);
+backdrop-filter:blur(30px);
+box-shadow:
+    0 0 40px rgba(255,255,255,.1),
+    0 25px 60px rgba(0,0,0,.55);
+transition:box-shadow .3s ease, transform .1s ease-out;
+transform-style:preserve-3d;
+will-change:transform;
+}
+.glass-card:hover{
+box-shadow:
+    0 0 55px rgba(0,207,255,.18),
+    0 35px 70px rgba(0,0,0,.6);
+}
+
+.card-layer{
+transform-style:preserve-3d;
+}
+
+.glass-card h2{
+font-size:clamp(20px,2.4vw,30px);
+margin-bottom:4px;
+transform:translateZ(45px);
+text-shadow:0 8px 20px rgba(0,0,0,.5);
+}
+
+.glass-card > .card-layer > p{
+font-size:13px;
+opacity:.65;
+transform:translateZ(35px);
+}
+
+.stats{
+display:flex;
+justify-content:space-between;
+margin-top:20px;
+transform:translateZ(30px);
+}
+.stats h3{
+font-size:clamp(18px,2vw,26px);
+color:#ffffff;
+}
+.stats span{
+opacity:.6;
+font-size:12px;
+}
+
+.bottom-row{
+flex:.6;
+min-height:0;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:0 40px;
+}
+
+.social-links{
+display:flex;
+gap:22px;
+align-items:center;
+justify-content:center;
+}
+
+.social-link{
+display:flex;
+align-items:center;
+gap:10px;
+padding:12px 22px;
+border-radius:40px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.15);
+color:#f5f5f5;
+font-size:16px;
+text-decoration:none;
+transition:.35s;
+}
+.social-link span{
+font-size:14px;
+font-weight:500;
+}
+.social-link:hover{
+transform:translateY(-5px);
+color:#00cfff;
+border-color:#00cfff;
+box-shadow:0 0 25px rgba(0,207,255,.4);
+}
+
+footer{
+flex:0 0 auto;
+padding:10px;
+text-align:center;
+border-top:1px solid rgba(255,255,255,.12);
+color:#999;
+font-size:11px;
+}
+footer h2{
+font-size:13px;
+margin-bottom:2px;
+color:#f5f5f5;
+}
+
+@media(max-width:900px){
+html, body{
+height:auto;
+overflow-x:hidden;
+overflow-y:auto;
+}
+.page{
+height:auto;
+padding-top:60px;
+}
+
+header{
+height:56px;
+}
+nav{
+padding:0 20px;
+}
+.logo{
+font-size:19px;
+}
+.join-btn{
+padding:7px 16px;
+font-size:12.5px;
+}
+nav ul{
+display:none;
+}
+
+.top-row{
+grid-template-columns:1fr;
+text-align:center;
+padding:28px 20px 24px;
+gap:26px;
+}
+.hero h1{
+font-size:34px;
+letter-spacing:-.5px;
+}
+.hero p{
+font-size:14px;
+line-height:1.5;
+max-width:320px;
+margin:0 auto;
+}
+
+.hero-right{
+perspective:none;
+}
+.glass-card{
+padding:22px 18px;
+border-radius:20px;
+}
+.glass-card:hover{
+box-shadow:
+    0 0 40px rgba(255,255,255,.1),
+    0 25px 60px rgba(0,0,0,.55);
+}
+.glass-card h2{
+font-size:21px;
+transform:none;
+}
+.glass-card > .card-layer > p{
+transform:none;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:8px;
+margin-top:18px;
+padding-top:18px;
+border-top:1px solid rgba(255,255,255,.1);
+transform:none;
+}
+.stats > div{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+.stats h3{
+font-size:19px;
+}
+.stats span{
+font-size:10.5px;
+letter-spacing:.2px;
+white-space:nowrap;
+}
+
+.bottom-row{
+padding:8px 20px 28px;
+}
+.social-links{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+justify-content:center;
+align-items:center;
+max-width:360px;
+margin:0 auto;
+}
+.social-link{
+padding:12px 18px;
+justify-content:center;
+font-size:14px;
+}
+.social-link span{
+font-size:13px;
+}
+
+footer{
+padding:16px 20px;
+}
+}
+
+/* Custom cursor */
+.xn-cursor{
+    position:fixed;
+    top:0;
+    left:0;
+    width:26px;
+    height:26px;
+    margin:-13px 0 0 -13px;
+    border-radius:50%;
+    border:1.5px solid #00cfff;
+    pointer-events:none;
+    z-index:999999;
+    opacity:0;
+    display:none;
+    transition:opacity .25s ease, width .2s ease, height .2s ease, margin .2s ease, background .2s ease;
+    will-change:transform;
+}
+.xn-cursor::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:4px;
+    height:4px;
+    background:#00cfff;
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 8px #00cfff, 0 0 16px rgba(0,207,255,.7);
+}
+.xn-cursor.is-visible{
+    opacity:1;
+}
+.xn-cursor.is-active{
+    width:20px;
+    height:20px;
+    margin:-10px 0 0 -10px;
+    border-color:#7d4dff;
+}
+.xn-cursor.is-hover{
+    width:52px;
+    height:52px;
+    margin:-26px 0 0 -26px;
+    background:rgba(0,207,255,.08);
+    border-color:#00cfff;
+    box-shadow:0 0 25px rgba(0,207,255,.35);
+}
+html.xn-has-cursor *{
+    cursor:none;
+}
+html.xn-has-cursor .xn-cursor{
+    display:block;
+}
 </style>
 </head>
 <body>
+<div class="xn-cursor" id="xnCursor"></div>
+<div id="loader">
+<div class="loader-logo">
+XENARO
+</div>
+</div>
+<div id="particles"></div>
+<header>
+<nav>
+<div class="logo">
+XENARO
+</div>
+<a class="join-btn" href="https://discord.gg/C64h96EGR7" target="_blank" rel="noopener">
+Join Now
+</a>
+</nav>
+</header>
+<div class="page">
 
-<div class="bg"></div>
+<section class="top-row" id="home">
+<div class="hero-left">
+<h1>
+SCOPE, AIM, SHOOT!
+</h1>
+<p>
+simple sa ladka hu,<br>game khel ke khush ho jata hu :)
+</p>
+</div>
+<div class="hero-right">
+<div class="glass-card" id="mainCard">
+<div class="card-layer">
+<h2>XENARO.69</h2>
+<p>
+Gaming Creator
+</p>
+<div class="stats">
+<div>
+<h3>1000+</h3>
+<span>Subscribers</span>
+</div>
+<div>
+<h3>300+</h3>
+<span>Videos</span>
+</div>
+<div>
+<h3>375K+</h3>
+<span>Views</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-<div class="shell">
-
-  <!-- TOP LEFT — Name -->
-  <div class="name-block">
-    <div class="name-tag">Xenaro</div>
-    <div class="name-sub">// Personal Space</div>
-  </div>
-
-  <!-- TOP RIGHT — About Me -->
-  <div class="about-block">
-    <div class="about-label">About Me</div>
-    <p class="about-text">
-      Hey, I'm <strong>Xenaro</strong> — a creator, gamer, and builder who lives at the intersection of
-      <strong>design and code</strong>.<br><br>
-      I make content, build things on the internet, and spend way too much time optimizing setups that already work.
-      Always down to connect with people who share the same obsessions.
-    </p>
-  </div>
-
-  <!-- GOAL BAR -->
-  <div class="goal-block" style="grid-area: goal;">
-    <div class="goal-header">
-      <div class="goal-label">YouTube Goal</div>
-      <div class="goal-count"><span>1,000</span> / 10,000 subs</div>
-    </div>
-    <div class="goal-track">
-      <div class="goal-fill" id="goalFill"></div>
-    </div>
-    <div class="goal-sub">10% there — keep going 🚀</div>
-  </div>
-
-  <!-- BOTTOM — Socials -->
-  <div class="socials-block">
-
-    <!-- YouTube -->
-    <a href="https://www.youtube.com/@xenaro.69" class="social-link yt" target="_blank" rel="noopener" aria-label="YouTube">
-      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-      </svg>
-      YouTube
-    </a>
-
-    <div class="social-divider"></div>
-
-    <!-- Discord -->
-    <a href="https://discord.gg/C64h96EGR7" class="social-link dc" target="_blank" rel="noopener" aria-label="Discord">
-      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
-      </svg>
-      Discord
-    </a>
-
-    <div class="social-divider"></div>
-
-    <!-- Twitter / X -->
-    <a href="https://x.com/xenaro_69" class="social-link tw" target="_blank" rel="noopener" aria-label="Twitter / X">
-      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.259 5.629L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
-      </svg>
-      Twitter
-    </a>
-
-    <div class="social-divider"></div>
-
-    <!-- Instagram -->
-    <a href="https://www.instagram.com/xe.naro.69/" class="social-link ig" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-      </svg>
-      Instagram
-    </a>
-
-  </div>
-
+<div class="bottom-row">
+<div class="social-links">
+<a href="https://www.youtube.com/@xenaro.69" target="_blank" rel="noopener" class="social-link"><i class="fa-brands fa-youtube"></i><span>YouTube</span></a>
+<a href="https://www.instagram.com/xenaro.69/" target="_blank" rel="noopener" class="social-link"><i class="fa-brands fa-instagram"></i><span>Instagram</span></a>
+<a href="https://discord.gg/C64h96EGR7" target="_blank" rel="noopener" class="social-link"><i class="fa-brands fa-discord"></i><span>Discord</span></a>
+<a href="https://x.com/xenaro_69" target="_blank" rel="noopener" class="social-link"><i class="fa-brands fa-twitter"></i><span>Twitter</span></a>
+</div>
 </div>
 
-<script>
-  setTimeout(() => {
-    document.getElementById('goalFill').style.width = '10%';
-  }, 400);
-</script>
+<footer>
+<h2>
+XENARO
+</h2>
+<p>
+© 2026 All Rights Reserved.
+</p>
+</footer>
 
+</div>
+<script>
+// =========================
+// XENARO
+// Premium Script
+// =========================
+
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        document.getElementById("loader").style.opacity = "0";
+        document.getElementById("loader").style.pointerEvents = "none";
+    },1200);
+});
+
+const header = document.querySelector("header");
+window.addEventListener("scroll",()=>{
+    if(window.scrollY>50){
+        header.style.background="rgba(0,0,0,.8)";
+    }
+    else{
+        header.style.background="rgba(0,0,0,.5)";
+    }
+});
+
+const glow=document.createElement("div");
+glow.style.position="fixed";
+glow.style.width="350px";
+glow.style.height="350px";
+glow.style.borderRadius="50%";
+glow.style.pointerEvents="none";
+glow.style.background="radial-gradient(circle, rgba(255,255,255,.1), transparent 70%)";
+glow.style.transform="translate(-50%,-50%)";
+glow.style.zIndex="-1";
+document.body.appendChild(glow);
+window.addEventListener("mousemove",(e)=>{
+glow.style.left=e.clientX+"px";
+glow.style.top=e.clientY+"px";
+});
+
+const particleContainer=document.getElementById("particles");
+function createParticle(){
+const p=document.createElement("span");
+const size=Math.random()*6+2;
+p.style.position="absolute";
+p.style.width=size+"px";
+p.style.height=size+"px";
+p.style.borderRadius="50%";
+p.style.background="#ffffff";
+p.style.opacity=Math.random()*0.6;
+p.style.left=Math.random()*100+"vw";
+p.style.top="110vh";
+p.style.boxShadow="0 0 20px rgba(255,255,255,.6)";
+particleContainer.appendChild(p);
+const speed=Math.random()*5+6;
+let y=110;
+const move=setInterval(()=>{
+y-=0.2;
+p.style.top=y+"vh";
+if(y<-10){
+clearInterval(move);
+p.remove();
+}
+},speed);
+}
+setInterval(createParticle,120);
+
+// Reveal animation: since the whole site now fits on one screen
+// with no scrolling, fade everything in on load instead of on scroll.
+document.querySelectorAll("section").forEach((section,i)=>{
+section.style.opacity="0";
+section.style.transform="translateY(30px)";
+section.style.transition=".7s";
+setTimeout(()=>{
+section.style.opacity="1";
+section.style.transform="translateY(0px)";
+},150+i*120);
+});
+
+const hero=document.querySelector(".hero h1");
+hero.animate([
+{
+opacity:0,
+transform:"translateY(40px)"
+},
+{
+opacity:1,
+transform:"translateY(0px)"
+}
+],{
+duration:1200,
+fill:"forwards"
+});
+
+document.querySelectorAll("button,a").forEach(btn=>{
+btn.addEventListener("mouseenter",()=>{
+btn.style.transition=".3s";
+btn.style.transform="translateY(-4px) scale(1.02)";
+});
+btn.addEventListener("mouseleave",()=>{
+btn.style.transform="translateY(0px) scale(1)";
+});
+});
+
+setInterval(()=>{
+document.body.style.background=
+`radial-gradient(circle at ${Math.random()*100}% ${Math.random()*100}%,
+rgba(255,255,255,.05),
+#0a0a0a 60%)`;
+},5000);
+
+document.querySelectorAll(".glass-card").forEach(card=>{
+card.addEventListener("mousemove",(e)=>{
+const rect=card.getBoundingClientRect();
+const x=e.clientX-rect.left;
+const y=e.clientY-rect.top;
+const rx=(y-rect.height/2)/18;
+const ry=(rect.width/2-x)/18;
+card.style.transform=
+`perspective(1200px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.02,1.02,1.02)`;
+});
+card.addEventListener("mouseleave",()=>{
+card.style.transform="perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)";
+});
+});
+
+// ---------------- Custom Cursor ----------------
+(function(){
+    const cursor = document.getElementById("xnCursor");
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let currentX = targetX;
+    let currentY = targetY;
+    let active = false;
+    let loopStarted = false;
+
+    function activate(){
+        if(active) return;
+        active = true;
+        document.documentElement.classList.add("xn-has-cursor");
+        cursor.classList.add("is-visible");
+        if(!loopStarted){
+            loopStarted = true;
+            loop();
+        }
+        document.querySelectorAll("a, button").forEach(el=>{
+            el.addEventListener("mouseenter",()=> cursor.classList.add("is-hover"));
+            el.addEventListener("mouseleave",()=> cursor.classList.remove("is-hover"));
+        });
+    }
+
+    // Only a real mouse fires "mousemove" with movementX/Y support repeatedly
+    // without a preceding touch event, so this reliably distinguishes mice
+    // from touchscreens even on hybrid devices where CSS media queries lie.
+    window.addEventListener("pointermove",(e)=>{
+        if(e.pointerType !== "mouse") return;
+        targetX = e.clientX;
+        targetY = e.clientY;
+        if(!active){
+            currentX = targetX;
+            currentY = targetY;
+            activate();
+        }
+    });
+    window.addEventListener("pointerdown",()=>{
+        if(active) cursor.classList.add("is-active");
+    });
+    window.addEventListener("pointerup",()=>{
+        cursor.classList.remove("is-active");
+    });
+    document.addEventListener("mouseleave",()=>{
+        if(active) cursor.classList.remove("is-visible");
+    });
+    document.addEventListener("mouseenter",()=>{
+        if(active) cursor.classList.add("is-visible");
+    });
+
+    function loop(){
+        currentX += (targetX - currentX) * 0.2;
+        currentY += (targetY - currentY) * 0.2;
+        cursor.style.transform = `translate(${currentX}px, ${currentY}px)`;
+        requestAnimationFrame(loop);
+    }
+})();
+</script>
 </body>
 </html>
