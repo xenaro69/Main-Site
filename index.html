@@ -141,38 +141,16 @@ display:flex;
 flex-direction:column;
 max-width:1680px;
 margin:auto;
-position:relative;
-}
-
-.page::before{
-content:'';
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background-image:url('blackhole4.png');
-background-size:cover;
-background-repeat:no-repeat;
-background-position:center right;
-z-index:0;
-pointer-events:none;
-opacity:0.95;
 }
 
 .top-row{
-flex:1;
+flex:1.15;
 min-height:0;
-display:flex;
+display:grid;
+grid-template-columns:1.1fr .9fr;
 align-items:center;
-padding:2vh clamp(24px,4vw,64px);
-z-index:100;
-position:relative;
-}
-
-.hero-left{
-flex:1;
-max-width:50%;
+gap:clamp(20px,4vw,90px);
+padding:1.5vh clamp(24px,4vw,64px);
 }
 
 .hero h1{
@@ -188,22 +166,7 @@ opacity:.7;
 }
 
 .hero-right{
-display:none;
-}
-
-.card-section{
-flex:0.8;
-display:flex;
-align-items:center;
-justify-content:flex-start;
-padding:0 clamp(24px,4vw,64px);
-z-index:100;
-position:relative;
-}
-
-.card-section .glass-card{
-max-width:380px;
-width:100%;
+perspective:1200px;
 }
 
 .glass-card{
@@ -264,8 +227,6 @@ display:flex;
 align-items:center;
 justify-content:center;
 padding:0 clamp(24px,4vw,64px);
-z-index:100;
-position:relative;
 }
 
 .social-links{
@@ -306,8 +267,6 @@ text-align:center;
 border-top:1px solid rgba(255,255,255,.12);
 color:#999;
 font-size:11px;
-z-index:100;
-position:relative;
 }
 footer h2{
 font-size:13px;
@@ -344,13 +303,10 @@ display:none;
 }
 
 .top-row{
-flex-direction:column;
+grid-template-columns:1fr;
 text-align:center;
 padding:28px 20px 24px;
-}
-
-.hero-left{
-max-width:100%;
+gap:26px;
 }
 .hero h1{
 font-size:34px;
@@ -406,21 +362,8 @@ letter-spacing:.2px;
 white-space:nowrap;
 }
 
-.card-section{
-padding:0 20px;
-justify-content:center;
-}
-
-.card-section .glass-card{
-max-width:100%;
-}
-
 .bottom-row{
 padding:8px 20px 28px;
-}
-
-.page::before{
-display:none;
 }
 .social-links{
 display:flex;
@@ -454,7 +397,7 @@ padding:16px 20px;
 XENARO
 </div>
 </div>
-<div id="particles" style="position:fixed;width:100%;height:100%;top:0;left:0;z-index:5;pointer-events:none;"></div>
+<div id="particles"></div>
 <header>
 <nav>
 <div class="logo">
@@ -477,10 +420,6 @@ simple sa ladka hu,<br>game khel ke khush ho jata hu :)
 </p>
 </div>
 <div class="hero-right">
-</div>
-</section>
-
-<section class="card-section">
 <div class="glass-card" id="mainCard">
 <div class="card-layer">
 <h2>XENARO.69</h2>
@@ -499,6 +438,7 @@ Gaming Creator
 <div>
 <h3>375K+</h3>
 <span>Views</span>
+</div>
 </div>
 </div>
 </div>
