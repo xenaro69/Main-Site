@@ -388,62 +388,10 @@ padding:16px 20px;
 }
 }
 
-/* Custom cursor */
-.xn-cursor{
-    position:fixed;
-    top:0;
-    left:0;
-    width:26px;
-    height:26px;
-    margin:-13px 0 0 -13px;
-    border-radius:50%;
-    border:1.5px solid #00cfff;
-    pointer-events:none;
-    z-index:999999;
-    opacity:0;
-    display:none;
-    transition:opacity .25s ease, width .2s ease, height .2s ease, margin .2s ease, background .2s ease;
-    will-change:transform;
-}
-.xn-cursor::after{
-    content:"";
-    position:absolute;
-    top:50%;
-    left:50%;
-    width:4px;
-    height:4px;
-    background:#00cfff;
-    border-radius:50%;
-    transform:translate(-50%,-50%);
-    box-shadow:0 0 8px #00cfff, 0 0 16px rgba(0,207,255,.7);
-}
-.xn-cursor.is-visible{
-    opacity:1;
-}
-.xn-cursor.is-active{
-    width:20px;
-    height:20px;
-    margin:-10px 0 0 -10px;
-    border-color:#7d4dff;
-}
-.xn-cursor.is-hover{
-    width:52px;
-    height:52px;
-    margin:-26px 0 0 -26px;
-    background:rgba(0,207,255,.08);
-    border-color:#00cfff;
-    box-shadow:0 0 25px rgba(0,207,255,.35);
-}
-html.xn-has-cursor *{
-    cursor:none;
-}
-html.xn-has-cursor .xn-cursor{
-    display:block;
-}
+
 </style>
 </head>
 <body>
-<div class="xn-cursor" id="xnCursor"></div>
 <div id="loader">
 <div class="loader-logo">
 XENARO
@@ -539,20 +487,7 @@ window.addEventListener("scroll",()=>{
     }
 });
 
-const glow=document.createElement("div");
-glow.style.position="fixed";
-glow.style.width="350px";
-glow.style.height="350px";
-glow.style.borderRadius="50%";
-glow.style.pointerEvents="none";
-glow.style.background="radial-gradient(circle, rgba(255,255,255,.1), transparent 70%)";
-glow.style.transform="translate(-50%,-50%)";
-glow.style.zIndex="-1";
-document.body.appendChild(glow);
-window.addEventListener("mousemove",(e)=>{
-glow.style.left=e.clientX+"px";
-glow.style.top=e.clientY+"px";
-});
+// Glow effect removed for cleaner look
 
 const particleContainer=document.getElementById("particles");
 function createParticle(){
@@ -593,7 +528,8 @@ section.style.transform="translateY(0px)";
 },150+i*120);
 });
 
-const hero=document.querySelector(".hero h1");
+const hero=document.querySelector(".hero-left h1");
+if(hero){
 hero.animate([
 {
 opacity:0,
@@ -607,6 +543,7 @@ transform:"translateY(0px)"
 duration:1200,
 fill:"forwards"
 });
+}
 
 document.querySelectorAll("button,a").forEach(btn=>{
 btn.addEventListener("mouseenter",()=>{
@@ -618,12 +555,7 @@ btn.style.transform="translateY(0px) scale(1)";
 });
 });
 
-setInterval(()=>{
-document.body.style.background=
-`radial-gradient(circle at ${Math.random()*100}% ${Math.random()*100}%,
-rgba(255,255,255,.05),
-#0a0a0a 60%)`;
-},5000);
+// Random background gradient removed for stability
 
 document.querySelectorAll(".glass-card").forEach(card=>{
 card.addEventListener("mousemove",(e)=>{
@@ -640,64 +572,7 @@ card.style.transform="perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1,
 });
 });
 
-// ---------------- Custom Cursor ----------------
-(function(){
-    const cursor = document.getElementById("xnCursor");
-    let targetX = window.innerWidth / 2;
-    let targetY = window.innerHeight / 2;
-    let currentX = targetX;
-    let currentY = targetY;
-    let active = false;
-    let loopStarted = false;
 
-    function activate(){
-        if(active) return;
-        active = true;
-        document.documentElement.classList.add("xn-has-cursor");
-        cursor.classList.add("is-visible");
-        if(!loopStarted){
-            loopStarted = true;
-            loop();
-        }
-        document.querySelectorAll("a, button").forEach(el=>{
-            el.addEventListener("mouseenter",()=> cursor.classList.add("is-hover"));
-            el.addEventListener("mouseleave",()=> cursor.classList.remove("is-hover"));
-        });
-    }
-
-    // Only a real mouse fires "mousemove" with movementX/Y support repeatedly
-    // without a preceding touch event, so this reliably distinguishes mice
-    // from touchscreens even on hybrid devices where CSS media queries lie.
-    window.addEventListener("pointermove",(e)=>{
-        if(e.pointerType !== "mouse") return;
-        targetX = e.clientX;
-        targetY = e.clientY;
-        if(!active){
-            currentX = targetX;
-            currentY = targetY;
-            activate();
-        }
-    });
-    window.addEventListener("pointerdown",()=>{
-        if(active) cursor.classList.add("is-active");
-    });
-    window.addEventListener("pointerup",()=>{
-        cursor.classList.remove("is-active");
-    });
-    document.addEventListener("mouseleave",()=>{
-        if(active) cursor.classList.remove("is-visible");
-    });
-    document.addEventListener("mouseenter",()=>{
-        if(active) cursor.classList.add("is-visible");
-    });
-
-    function loop(){
-        currentX += (targetX - currentX) * 0.2;
-        currentY += (targetY - currentY) * 0.2;
-        cursor.style.transform = `translate(${currentX}px, ${currentY}px)`;
-        requestAnimationFrame(loop);
-    }
-})();
 </script>
 </body>
 </html>
